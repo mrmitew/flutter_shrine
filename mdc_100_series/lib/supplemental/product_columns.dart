@@ -33,13 +33,13 @@ class TwoProductCardColumn extends StatelessWidget {
 
       double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
       double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
-      // TODO: Change imageAspectRatio calculation (104)
-      double imageAspectRatio = constraints.biggest.width / heightOfImages;
 
-      // TODO: Replace Column with a ListView (104)
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      double imageAspectRatio =
+          (heightOfImages >= 0.0 && constraints.biggest.width > heightOfImages)
+              ? constraints.biggest.width / heightOfImages
+              : 33 / 49;
+
+      return ListView(
         children: <Widget>[
           Padding(
             padding: EdgeInsetsDirectional.only(start: 28.0),
@@ -73,9 +73,17 @@ class OneProductCardColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Replace Column with a ListView (104)
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+    /**
+     * The front layer animates (slides) down. But if you look down,
+     * there's a red error and an overflow error.
+     * This is because the AsymmetricView is squeezed and becomes smaller
+     * by this animation, which in turn gives less room to the Columns.
+     * Eventually, the Columns can't lay themselves out with the space given
+     * and they result in an error. If we replace the Columns with ListViews,
+     * the column size should remain as they animate.
+     */
+    return ListView(
+      reverse: true,
       children: <Widget>[
         ProductCard(
           product: product,
