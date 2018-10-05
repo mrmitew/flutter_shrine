@@ -51,8 +51,16 @@ class HomePage extends StatelessWidget {
           crossAxisCount: 2,
           padding: EdgeInsets.all(16.0),
           childAspectRatio: 8.0 / 9.0,
-          children: <Widget>[
-            Card(
+          children: _buildCards(10),
+        ),
+      ),
+    );
+  }
+
+  List<Card> _buildCards(int count) {
+    return List.generate(
+        count,
+        (int index) => Card(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -73,10 +81,6 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            ));
   }
 }
