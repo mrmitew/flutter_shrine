@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:Shrine/app.dart';
 import 'package:Shrine/util/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -34,14 +35,15 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset('assets/diamond.png',
+                    color: useDarkTheme ? kShrineBackgroundWhite : null),
                 SizedBox(height: 16.0),
                 Text('SHRINE'),
               ],
             ),
             SizedBox(height: 120.0),
             AccentColorOverride(
-              color: kShrineBrown900,
+              color: useDarkTheme ? kShrineAltYellow : kShrineBrown900,
               child: TextField(
                 controller: _usernameTextEditingController,
                 decoration: InputDecoration(
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 12.0),
             AccentColorOverride(
-              color: kShrineBrown900,
+              color: useDarkTheme ? kShrineAltYellow : kShrineBrown900,
               child: TextField(
                   controller: _passwordTextEditingController,
                   decoration: InputDecoration(

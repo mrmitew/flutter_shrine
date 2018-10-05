@@ -21,6 +21,8 @@ import 'login.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
+const useDarkTheme = false;
+
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
   @override
@@ -53,21 +55,43 @@ class ShrineApp extends StatelessWidget {
 }
 
 ThemeData _buildShrineTheme() {
-  final ThemeData base = ThemeData.light();
-  return base.copyWith(
-    accentColor: kShrineBrown900,
-    primaryColor: kShrinePink100,
-    buttonColor: kShrinePink100,
-    scaffoldBackgroundColor: kShrineBackgroundWhite,
-    cardColor: kShrineBackgroundWhite,
-    textSelectionColor: kShrinePink100,
-    errorColor: kShrineErrorRed,
-    textTheme: _buildShrineTextTheme(base.textTheme),
-    primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-    primaryIconTheme: base.iconTheme.copyWith(color: kShrineBrown900),
-    inputDecorationTheme: InputDecorationTheme(border: CutCornersBorder()),
-  );
+  if (useDarkTheme) {
+    final ThemeData base = ThemeData.dark();
+    return base.copyWith(
+      accentColor: kShrineAltDarkGrey,
+      primaryColor: kShrineAltDarkGrey,
+      buttonColor: kShrineAltYellow,
+      scaffoldBackgroundColor: kShrineAltDarkGrey,
+      cardColor: kShrineAltDarkGrey,
+      textSelectionColor: kShrinePink100,
+      errorColor: kShrineErrorRed,
+      textTheme: _buildShrineTextTheme(base.textTheme),
+      primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
+      accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
+      primaryIconTheme: base.iconTheme.copyWith(color: kShrineAltYellow),
+      inputDecorationTheme: InputDecorationTheme(
+        border: CutCornersBorder(),
+      ),
+    );
+  } else {
+    final ThemeData base = ThemeData.light();
+    return base.copyWith(
+      accentColor: kShrineBrown900,
+      primaryColor: kShrinePink100,
+      buttonColor: kShrinePink100,
+      scaffoldBackgroundColor: kShrineBackgroundWhite,
+      cardColor: kShrineBackgroundWhite,
+      textSelectionColor: kShrinePink100,
+      errorColor: kShrineErrorRed,
+      textTheme: _buildShrineTextTheme(base.textTheme),
+      primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
+      accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
+      primaryIconTheme: base.iconTheme.copyWith(color: kShrineBrown900),
+      inputDecorationTheme: InputDecorationTheme(
+        border: CutCornersBorder(),
+      ),
+    );
+  }
 }
 
 TextTheme _buildShrineTextTheme(TextTheme base) {
@@ -84,7 +108,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       )
       .apply(
         fontFamily: 'Rubik',
-        displayColor: kShrineBrown900,
-        bodyColor: kShrineBrown900,
+        displayColor: useDarkTheme ? kShrineSurfaceWhite : kShrineBrown900,
+        bodyColor: useDarkTheme ? kShrineSurfaceWhite : kShrineBrown900,
       );
 }
