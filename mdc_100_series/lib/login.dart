@@ -20,7 +20,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
+  final _usernameTextEditingController = TextEditingController();
+  final _passwordTextEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +42,8 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add button bar (101)
             TextField(
+              controller: _usernameTextEditingController,
               decoration: InputDecoration(
                 filled: true,
                 labelText: 'Username',
@@ -49,12 +51,33 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 12.0),
             TextField(
-              decoration: InputDecoration(
-                filled: true,
-                labelText: 'Password',
-              ),
-              obscureText: true
-            ),
+                controller: _passwordTextEditingController,
+                decoration: InputDecoration(
+                  filled: true,
+                  labelText: 'Password',
+                ),
+                obscureText: true),
+            SizedBox(height: 12.0),
+            ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                  child: Text('CANCEL'),
+                  onPressed: () {
+                    // trigger rebuild to clear the fields
+                    setState(() {
+                      _usernameTextEditingController.clear();
+                      _passwordTextEditingController.clear();
+                    });
+                  },
+                ),
+                RaisedButton(
+                  child: Text('NEXT'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            )
           ],
         ),
       ),
