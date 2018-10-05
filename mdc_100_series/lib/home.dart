@@ -13,11 +13,10 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'model/products_repository.dart';
 import 'model/product.dart';
+import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
   // TODO: Make a collection of cards (102)
@@ -76,8 +75,7 @@ class HomePage extends StatelessWidget {
       return Card(
         // TODO: Adjust card heights (103)
         child: Column(
-          // TODO: Center items on the card (103)
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18 / 11,
@@ -91,14 +89,15 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
-                  // TODO: Align labels to the bottom and center (103)
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // TODO: Change innermost Column (103)
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    // TODO: Handle overflowing labels (103)
+                    // Handle overflowing labels (103)
                     Text(
-                      product.name,
-                      style: theme.textTheme.title,
+                      product == null ? '' : product.name,
+                      style: theme.textTheme.button,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
                     SizedBox(height: 8.0),

@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:Shrine/util/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -39,24 +40,25 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             SizedBox(height: 120.0),
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            TextField(
-              controller: _usernameTextEditingController,
-              decoration: InputDecoration(
-                filled: true,
-                labelText: 'Username',
+            AccentColorOverride(
+              color: kShrineBrown900,
+              child: TextField(
+                controller: _usernameTextEditingController,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                ),
               ),
             ),
             SizedBox(height: 12.0),
-            TextField(
-                controller: _passwordTextEditingController,
-                decoration: InputDecoration(
-                  filled: true,
-                  labelText: 'Password',
-                ),
-                obscureText: true),
+            AccentColorOverride(
+              color: kShrineBrown900,
+              child: TextField(
+                  controller: _passwordTextEditingController,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                  ),
+                  obscureText: true),
+            ),
             SizedBox(height: 12.0),
             ButtonBar(
               children: <Widget>[
@@ -72,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 RaisedButton(
                   child: Text('NEXT'),
+                  elevation: 8.0,
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -85,4 +88,18 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-// TODO: Add AccentColorOverride (103)
+class AccentColorOverride extends StatelessWidget {
+  const AccentColorOverride({Key key, this.color, this.child})
+      : super(key: key);
+
+  final Color color;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      child: child,
+      data: Theme.of(context).copyWith(accentColor: color),
+    );
+  }
+}
