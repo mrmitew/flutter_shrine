@@ -1,25 +1,14 @@
-# Material Components for Flutter Codelabs
+# Shrine
+Shrine, a (fake) e-commerce app that sells clothing and home goods.
 
-This repository contains four codelabs for [Material Components for Flutter](https://github.com/material-components/material-components-flutter).
+## Intro
+The app is part of Google's codelabs that I did while practicing working with Flutter.
 
-## Introduction
-
-Codelabs MDC-101 through MDC-104 will guide you through building and integrating one application with MDC-Flutter.
-
-## Branches
-
-The starter and completed code is in the various branches of this repo.
+## Screenshots
+<img src="https://github.com/mrmitew/flutter_shrine/blob/master/mdc_100_series/design/device-2018-10-05-171235.png" width="300"/> <img src="https://github.com/mrmitew/flutter_shrine/blob/master/mdc_100_series/design/device-2018-10-05-171314.png" width="300"/>
 
 ## Getting Started
 Visit the [Google codelabs site](https://codelabs.developers.google.com/), or [codelabs.developers.google.com/codelabs/mdc-101-flutter](https://codelabs.developers.google.com/codelabs/mdc-101-flutter), to follow along the guided steps.
-
-## Support
-
-If you've found an error in this sample, please file an issue on [GitHub](https://github.com/material-components/material-components-flutter-codelabs/issues).
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub.
-
 
 ## License
 
