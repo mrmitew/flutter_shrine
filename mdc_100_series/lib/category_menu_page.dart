@@ -1,3 +1,4 @@
+import 'package:Shrine/app.dart';
 import 'package:Shrine/util/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -38,7 +39,7 @@ class CategoryMenuPage extends StatelessWidget {
                 Container(
                   width: 70.0,
                   height: 2.0,
-                  color: kShrinePink400,
+                  color: useDarkTheme ? kShrineBrown900 : kShrinePink400,
                 ),
               ],
             )
@@ -47,7 +48,8 @@ class CategoryMenuPage extends StatelessWidget {
               child: Text(
                 categoryString,
                 style: theme.textTheme.body2
-                    .copyWith(color: kShrineBrown900.withAlpha(153)),
+                    .copyWith(color:
+                useDarkTheme ? kShrineBrown900.withAlpha(153) : kShrineBrown900.withAlpha(153)),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -59,7 +61,7 @@ class CategoryMenuPage extends StatelessWidget {
     return Center(
       child: Container(
         padding: EdgeInsets.only(top: 40.0),
-        color: kShrinePink100,
+        color: useDarkTheme ? kShrineAltYellow : kShrinePink100,
         child: ListView(
             children: _categories
                 .map((Category c) => _buildCategory(c, context))

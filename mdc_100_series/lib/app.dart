@@ -25,6 +25,7 @@ import 'login.dart';
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 // TODO: Build the dark theme using a second _buildShrineTheme()
+// FIXME: Dark theme colors
 const useDarkTheme = false;
 
 class ShrineApp extends StatefulWidget {
