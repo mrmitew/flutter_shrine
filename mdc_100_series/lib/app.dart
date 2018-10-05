@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:Shrine/backdrop.dart';
+import 'package:Shrine/category_menu_page.dart';
 import 'package:Shrine/model/product.dart';
 import 'package:Shrine/supplemental/cut_corners_border.dart';
 import 'package:Shrine/util/colors.dart';
@@ -26,8 +27,16 @@ final ThemeData _kShrineTheme = _buildShrineTheme();
 // TODO: Build the dark theme using a second _buildShrineTheme()
 const useDarkTheme = false;
 
-// TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
+  @override
+  ShrineAppState createState() {
+    return new ShrineAppState();
+  }
+}
+
+class ShrineAppState extends State<ShrineApp> {
+  Category _currentCategory = Category.all;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,12 +44,12 @@ class ShrineApp extends StatelessWidget {
       theme: _kShrineTheme,
       title: 'Shrine',
       home: Backdrop(
-        // TODO: Make currentCategory field take _currentCategory (104)
-        currentCategory: Category.all,
-        // TODO: Pass _currentCategory for frontLayer (104)
+        currentCategory: _currentCategory,
         frontLayer: HomePage(),
-        // TODO: Change backLayer field value to CategoryMenuPage (104)
-        backLayer: Container(color: kShrinePink100),
+        backLayer: CategoryMenuPage(
+          currentCategory: _currentCategory,
+            onCategoryTap: _onCategoryTap,
+        ),
         frontTitle: Text('SHRINE'),
         backTitle: Text('MENU'),
       ),
@@ -50,6 +59,12 @@ class ShrineApp extends StatelessWidget {
       initialRoute: '/login',
       onGenerateRoute: _getRoute,
     );
+  }
+
+  void _onCategoryTap(Category category) {
+    setState(() {
+      _currentCategory = category;
+    });
   }
 
   Route<dynamic> _getRoute(RouteSettings settings) {
