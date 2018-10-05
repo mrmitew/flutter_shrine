@@ -45,17 +45,14 @@ class ShrineAppState extends State<ShrineApp> {
       title: 'Shrine',
       home: Backdrop(
         currentCategory: _currentCategory,
-        frontLayer: HomePage(),
+        frontLayer: HomePage(category: _currentCategory),
         backLayer: CategoryMenuPage(
           currentCategory: _currentCategory,
-            onCategoryTap: _onCategoryTap,
+          onCategoryTap: _onCategoryTap,
         ),
         frontTitle: Text('SHRINE'),
         backTitle: Text('MENU'),
       ),
-      // TODO: Make currentCategory field take _currentCategory (104)
-      // TODO: Pass _currentCategory for frontLayer (104)
-      // TODO: Change backLayer field value to CategoryMenuPage (104)
       initialRoute: '/login',
       onGenerateRoute: _getRoute,
     );
