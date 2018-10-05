@@ -21,39 +21,11 @@ import 'model/product.dart';
 import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
-  // TODO: Make a collection of cards (102)
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
-    return Scaffold(
-      appBar: AppBar(
-        brightness: useDarkTheme ? Brightness.dark : Brightness.light,
-        leading: IconButton(
-          icon: Icon(Icons.menu, semanticLabel: 'menu'),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, semanticLabel: 'search'),
-            onPressed: () {
-              print('Search button');
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.tune, semanticLabel: 'filter'),
-            onPressed: () {
-              print('Filter button');
-            },
-          ),
-        ],
-        title: Text("SHRINE"),
-      ),
-      body: AsymmetricView(
-          products: ProductsRepository.loadProducts(Category.all)),
-    );
+    return AsymmetricView(
+          products: ProductsRepository.loadProducts(Category.all));
   }
 }

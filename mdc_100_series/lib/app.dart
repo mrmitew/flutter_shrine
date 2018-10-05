@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:Shrine/backdrop.dart';
+import 'package:Shrine/model/product.dart';
 import 'package:Shrine/supplemental/cut_corners_border.dart';
 import 'package:Shrine/util/colors.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ import 'login.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
+// TODO: Build the dark theme using a second _buildShrineTheme()
 const useDarkTheme = false;
 
 // TODO: Convert ShrineApp to stateful widget (104)
@@ -31,8 +34,16 @@ class ShrineApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: _kShrineTheme,
       title: 'Shrine',
-      // TODO: Change home: to a Backdrop with a HomePage frontLayer (104)
-      home: HomePage(),
+      home: Backdrop(
+        // TODO: Make currentCategory field take _currentCategory (104)
+        currentCategory: Category.all,
+        // TODO: Pass _currentCategory for frontLayer (104)
+        frontLayer: HomePage(),
+        // TODO: Change backLayer field value to CategoryMenuPage (104)
+        backLayer: Container(color: kShrinePink100),
+        frontTitle: Text('SHRINE'),
+        backTitle: Text('MENU'),
+      ),
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
       // TODO: Change backLayer field value to CategoryMenuPage (104)
